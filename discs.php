@@ -1,7 +1,7 @@
 <?php
 include "db.php";
 $db = connexionBase();
-$requete = $db->query("SELECT * FROM `disc`");
+$requete = $db->query("SELECT * FROM `disc` JOIN `artist` ON disc.artist_id = artist.artist_id;");
 $tableau = $requete->fetchAll(PDO::FETCH_OBJ);
 $requete->closeCursor();
 
@@ -23,19 +23,19 @@ $requete->closeCursor();
     <div class="container-fluid">      
         <div class="row p-3">
             <h1 class="col-10">Liste des disques (15)</h1>
-            <a href="#" class="btn btn-primary col-2">Ajouter</a>
+            <a href="disc_new.php" class="btn btn-primary col-2">Ajouter</a>
         </div>
-        <table>
+        <table> 
         <?php foreach ($tableau as $disc):?>
             <tr>
                 <td><img src="<?=$disc->disc_picture?>" class="w-50"></td>
                 <td class="fs-6">
                 <span class="fs-1"><?=$disc->disc_title?></span><br>
-                <span class="fs-2"><?=$disc->artist_id?></span><br>              
-                <span class="fw-bold">Label : </span><?=$disc->disc_label?><br>              
-                <span class="fw-bold">Year : </span><?=$disc->disc_year?><br>               
-                <span class="fw-bold">Genre :</span><?=$disc->disc_genre?><br>
-                <a href="#" class="btn btn-primary mt-5 text-center">Détails</a></td>
+                <span class="fs-2"><?=$disc->artist_name?></span><br>              
+                <span class="fw-bold">Label : </span> <?=$disc->disc_label?><br>              
+                <span class="fw-bold">Year : </span> <?=$disc->disc_year?><br>               
+                <span class="fw-bold">Genre :</span> <?=$disc->disc_genre?><br>
+                <a href="disc_detail.php?id=<?= $disc->disc_id?>" class="btn btn-primary mt-5 text-center">Détails</a></td>
             </tr>
             <?php endforeach; ?>
         </table>           
