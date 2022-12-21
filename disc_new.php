@@ -14,7 +14,7 @@
             <h1 class="col-10">Ajouter un disque</h1>
             <a href="discs.php" class="btn btn-primary col-2">Retour</a>
         </div>
-        <form action="" method="post" enctype="multipart/form-data">            
+        <form action="disc_ajout_ctrl.php" method="post" enctype="multipart/form-data">            
             <label for="title">Titre :</label><br>
             <input type="text" placeholder="Entrez un titre" class="col-12" name="title">
             <label for="artist" class="mt-1">Artiste :</label><br>
@@ -26,7 +26,7 @@
                 <option value="Queens of the Stones Age">Queens of the Stones Age</option>
                 <option value="Serge Gainsbourg">Serge Gainsbourg</option>
                 <option value="AC/DC">AC/DC</option>
-                <option value="Marillion">Marillion</option>
+                <optidisc_detailon value="Marillion">Marillion</option>
                 <option value="Bob Dylan">Bob Dylan</option>
                 <option value="Fleshtones">Fleshtones</option>
                 <option value="The Clash">The Clash</option>
@@ -38,15 +38,13 @@
             <label for="label" class="mt-1">Label :</label><br>
             <input type="text" placeholder="Entrez un label" class="col-12" name="label">
             <label for="price" class="mt-1">Price :</label><br>
-            <input type="number" class="col-12" name="price">
+            <input type="text" class="col-12" name="price">
             <label for="price" class="mt-1">Picture :</label><br>
-            <input type="file" name="picture">          
+            <input type="file" name="picture">
+            <br><br>
+            <input class="btn btn-primary" type="submit" value="Ajouter">
         </form>
-        <div class="row">
-            <div class="col-4 mt-3">
-                <a href="#" class="btn btn-primary col-2">Ajouter</a>
-            </div>          
-        </div>
+        
     </div>
 </body>
 </html>

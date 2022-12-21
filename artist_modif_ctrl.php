@@ -27,7 +27,6 @@
         $requete->execute();
         $requete->closeCursor();
     }
-
     catch (Exception $e) {
         echo "Erreur : " . $requete->errorInfo()[2] . "<br>";
         die("Fin du script (artist_modif_ctrl.php)");

@@ -39,6 +39,7 @@
         $picture = $_POST['picture']; 
     }
     else {
+        
         $picture = null;
     }
 
