@@ -27,7 +27,10 @@ $requete->closeCursor();
         </div>
         <table>
             <tr>
-                <!-- <td class="p-3"><img src="<?=$myDisc->disc_picture?>" class="w-50"></td> -->
+                <td class="p-3">
+                    <span class="fs-3" hidden><?=$myDisc->disc_id?></span>
+                </td>
+                <td class="p-3"><img src="upload/<?=$myDisc->disc_picture?>" class="w-50"></td>
                 <td class="p-3">
                     <span class="fs-3"><?=$myDisc->disc_title?></span>
                 </td>

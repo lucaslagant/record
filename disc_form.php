@@ -5,6 +5,7 @@ $requete = $db->prepare("SELECT * FROM disc JOIN artist ON disc.artist_id = arti
 $requete ->execute(array($_GET["id"]));
 $myDisc = $requete ->fetch(PDO::FETCH_OBJ);
 $requete->closeCursor();
+// var_dump($myDisc);
 ?>
 <!DOCTYPE html>
 <html lang="fr">

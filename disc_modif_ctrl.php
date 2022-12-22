@@ -45,44 +45,30 @@ if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0){
 else{
     echo "Une erreur est survenue";
 }
-
-// Avoir un nom unique 
-if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0){
-
-    $uniqueName = uniqid('', true);
-    //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
-    $file = $uniqueName.".".$extension;
-
-    move_uploaded_file($tmpName,'./upload/'.$file);
-}
-
 // Insertion en BDD
 require "db.php";
 $db = connexionBase();
-
-move_uploaded_file($tmpName,'./upload/'.$file);
-$req = $db->prepare("UPDATE disc SET disc_picture = :picture");
-$req->bindValue(":picture", $file, PDO::PARAM_STR);
-$req->execute([$file]);
 
 
 // Si erreur envoie vers form 
 if ($id == Null) {
     header("Location: discs.php");
 }
-elseif ($title == Null || $year == Null || $genre == Null || $label == Null || $price == Null ) {
+elseif ($title == Null || $year == Null || $genre == Null || $label == Null || $price == Null || $name == Null ) {
     header("Location: disc_form.php?id=".$id);
     exit;
 }
 
 try {
-    $requete = $db->prepare("UPDATE disc SET disc_title = :title, disc_year = :year, disc_genre = :genre, disc_label = :label, disc_price = :price WHERE disc_id = :id");
+    $requete = $db->prepare("UPDATE disc SET disc_title = :title, disc_year = :year, disc_genre = :genre, disc_label = :label, disc_price = :price, disc_picture = :picture WHERE disc_id = :id");
     $requete->bindValue(":id", $id, PDO::PARAM_INT);
     $requete->bindValue(":title", $title, PDO::PARAM_STR);
     $requete->bindValue(":year", $year, PDO::PARAM_INT);
     $requete->bindValue(":genre", $genre, PDO::PARAM_STR);
     $requete->bindValue(":label", $label, PDO::PARAM_STR);
     $requete->bindValue(":price", $price, PDO::PARAM_STR);
+    $requete->bindValue(":picture", $name, PDO::PARAM_STR);
+
 
     $requete->execute();
     $requete->closeCursor();
