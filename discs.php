@@ -28,7 +28,7 @@ $requete->closeCursor();
         <table> 
         <?php foreach ($tableau as $disc):?>
             <tr>
-                <td><img src="<?=$disc->disc_picture?>" class="w-50"></td>
+                <!-- <td><img src="<?=$disc->disc_picture?>" class="w-50"></td> -->
                 <td class="fs-6">
                 <span class="fs-1"><?=$disc->disc_title?></span><br>
                 <span class="fs-2"><?=$disc->artist_name?></span><br>              

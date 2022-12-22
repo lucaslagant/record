@@ -1,3 +1,14 @@
+<?php
+include "db.php";
+$db = connexionBase();
+$requete = $db->query("SELECT * FROM `disc` JOIN `artist` ON disc.artist_id = artist.artist_id;");
+$tableau = $requete->fetchAll(PDO::FETCH_OBJ);
+$requete->closeCursor();
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,17 +30,10 @@
             <input type="text" placeholder="Entrez un titre" class="col-12" name="title">
             <label for="artist" class="mt-1">Artiste :</label><br>
             <select name="selectArtist" id="selectArtist" class="col-12">
-                <option disable selected>Selectionnez un artiste</option>
-                <option value="Neil Young">Neil Young</option>
-                <option value="YES">YES</option>
-                <option value="Rolling Stones">Rolling Stones</option>
-                <option value="Queens of the Stones Age">Queens of the Stones Age</option>
-                <option value="Serge Gainsbourg">Serge Gainsbourg</option>
-                <option value="AC/DC">AC/DC</option>
-                <optidisc_detailon value="Marillion">Marillion</option>
-                <option value="Bob Dylan">Bob Dylan</option>
-                <option value="Fleshtones">Fleshtones</option>
-                <option value="The Clash">The Clash</option>
+                <option disabled selected>Selectionnez un artiste</option>
+                <?php foreach ($tableau as $disc):?>
+                    <option value="<?=$disc->artist_name?>"><?=$disc->artist_name?></option>
+                <?php endforeach; ?>
             </select>
             <label for="year" class="mt-1">Année :</label><br>
             <input type="text" placeholder="Entrez une année" class="col-12" name="year">

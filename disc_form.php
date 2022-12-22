@@ -20,7 +20,7 @@ $requete->closeCursor();
     <div class="container-fluid">
         <div class="row p-3">
             <h1 class="col-10">Disque n°<?=$myDisc->disc_id?></h1>
-            <a href="discs.php" class="btn btn-primary col-2">Retour</a>
+            <a href="disc_detail.php?id=<?=$myDisc->disc_id?>" class="btn btn-primary col-2">Retour</a>
         </div>
         <form action="disc_modif_ctrl.php" method="post" enctype="multipart/form-data">            
             <label for="title">Titre :</label><br>
@@ -37,7 +37,11 @@ $requete->closeCursor();
             <label for="price" class="mt-1">Price :</label><br>
             <input type="text" class="col-12" name="price" value="<?= $myDisc->disc_price?>">
             <label for="price" class="mt-1">Picture :</label><br>
-            <input type="file" name="picture" value="<?= $myDisc->disc_picture?>">
+            <input type="file" name="file">
+            <?php 
+                $req = $db->query('SELECT disc_picture FROM disc');
+                    echo "<img src='".$myDisc->disc_picture."'><br>";
+            ?>
             <br><br>
             <input class="btn btn-primary" type="submit" value="Modifier">
             <input class="btn btn-primary" type="reset" value="Annuler">

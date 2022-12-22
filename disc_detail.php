@@ -27,7 +27,7 @@ $requete->closeCursor();
         </div>
         <table>
             <tr>
-                <td class="p-3"><img src="<?=$myDisc->disc_picture?>" class="w-50"></td>
+                <!-- <td class="p-3"><img src="<?=$myDisc->disc_picture?>" class="w-50"></td> -->
                 <td class="p-3">
                     <span class="fs-3"><?=$myDisc->disc_title?></span>
                 </td>
@@ -49,10 +49,8 @@ $requete->closeCursor();
             </tr>
         </table>
         <div class="d-flex justify-content-center">
-            <!-- Ajouter le page disc_form.php  -->
             <a href="disc_form.php?id=<?= $myDisc->disc_id ?>" class="btn btn-primary m-1">Modifier</a>
-            <!-- Ajouter le page disc_delete_ctrl.php  -->
-            <a href="#" class="btn btn-primary m-1">Supprimer</a>
+            <a href="disc_delete_ctrl.php?id=<?= $myDisc->disc_id?>" class="btn btn-primary m-1">Supprimer</a>
         </div>
        
     </div>        

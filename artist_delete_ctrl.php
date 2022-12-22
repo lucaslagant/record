@@ -24,5 +24,3 @@
     header("Location: artists.php");
     exit;
 ?>
-
-disc_ibfk_1
